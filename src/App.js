@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Region from "./pages/Region";
 import SearchedCountry from "./pages/SearchedCountry";
+import BorderDetail from "./pages/BorderDetail";
 import NotFound from "./pages/NotFound";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/detail/:detail" element={<Detail />} />
             <Route path="/region/:region" element={<Region />} />
             <Route path="/searched/:searched" element={<SearchedCountry />} />
+            <Route path="/border/:border" element={<BorderDetail />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </main>

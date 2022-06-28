@@ -1,33 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Spinner from "../components/Spinner";
 import CountryDetail from "../components/CourtryDetail";
 
-import { useParams } from "react-router-dom";
-
-import Spinner from "../components/Spinner";
-function Detail() {
+function BorderDetail() {
   const [data, setDatas] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const params = useParams();
 
-  const fetchCountry = async (searchTerm) => {
+  const getBorderCountry = async (borderCountry) => {
     const response = await fetch(
-      `https://restcountries.com/v3.1/name/${searchTerm}?full-text=true`,
+      `https://restcountries.com/v3.1/alpha?codes=${borderCountry}`,
       {
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
-    setLoading(false);
     const data = await response.json();
+
     setDatas(data);
+    setLoading(false);
   };
 
   useEffect(() => {
-    fetchCountry(params.detail);
-    // eslint-disable-next-line
-  }, [params.detail]);
+    getBorderCountry(params.border);
+  }, [params.border]);
 
   return (
     <>
@@ -36,4 +35,4 @@ function Detail() {
   );
 }
 
-export default Detail;
+export default BorderDetail;

@@ -44,7 +44,7 @@ function Search() {
               placeholder={"search for a country...."}
               onChange={handleChange}
             />
-            <FaSearch />
+            <FaSearch onClick={handleSearch} />
           </div>
         </form>
 

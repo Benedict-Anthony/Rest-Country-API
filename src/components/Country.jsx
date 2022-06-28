@@ -11,7 +11,10 @@ function Country({ country: { flags, name, population, region, capital } }) {
           <h1>{name.common}</h1>
         </Link>
         <p>
-          Population: <span>{population}</span>
+          Population:{" "}
+          <span>
+            {population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ")}
+          </span>
         </p>
         <p>Region: {region}</p>
         <p>Capita: {capital}</p>
